@@ -97,6 +97,7 @@ NOTE: 0x004b = 75 (degrees of Celsius)
 
 # Bugs
 
+* Negative values handled incorrectly
 * The +/- 0.5 degree of Celsius precision is lost (currently
 only whole degrees of Celsius are shown)
 
