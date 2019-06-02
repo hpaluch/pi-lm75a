@@ -1,6 +1,7 @@
 # Connecting LM75A to Raspberry PI
 
-WARNING: Work in progress
+How to connect popular LM75A Temperature sensor to
+Raspberry PI using I2C.
 
 Tested HW/SW:
 
@@ -21,8 +22,8 @@ Tested HW/SW:
 Connect your Raspberry PI to CJMCU-75 board using this layout
 
 ```
-            Rasp. Pi
-            1 2
+           Rasp. Pi
+             1 2
 CJMCU-75    +---+       CJMCU-75
 NC  --  3.3V|o o|5V  -- VCC
 SDA --  SDA |o o|NC
