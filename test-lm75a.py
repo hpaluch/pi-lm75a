@@ -5,13 +5,12 @@ import sys
 import smbus
 
 
-def read_temp(bus_obj,i2c_addr):
-    bus_obj.write_byte_data(i2c_addr,0,0)
-    x = bus_obj.read_word_data(i2c_addr,0)
+def read_temp(bus_obj,i2c_addr,temp_reg,descr):
+    x = bus_obj.read_word_data(i2c_addr,temp_reg)
     # swap byte order
     x2 = (( x >> 8) & 0xff) + ( ( x << 8 ) & 0xff00)
-    print("Raw=0x%x Raw_Swapped=0x%x" % (x,x2))
-    print("Temperature in Celsius=%d" % (x2 >> 8,) )
+    #print("Raw=0x%x Raw_Swapped=0x%x" % (x,x2))
+    print("%s temperature is %d Celsius" % (descr,x2 >> 8,) )
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
@@ -24,6 +23,8 @@ if __name__ == "__main__":
     print("Expecting LM75 to have I2C slave address 0x%x on I2C BUS %u" % (i2c_addr,i2c_bus))
 
     bus = smbus.SMBus(i2c_bus)
-    read_temp(bus,i2c_addr)
+    read_temp(bus, i2c_addr,0, "Current")
+    read_temp(bus, i2c_addr,2, "Hysteresis")
+    read_temp(bus, i2c_addr,3, "Shutdown")
 
 

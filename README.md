@@ -58,13 +58,22 @@ Now you can run example python program:
 ```
 ./test-lm75a.py 1 0x48
    Expecting LM75 to have I2C slave address 0x48 on I2C BUS 1
-   Raw=0x801a Raw_Swapped=0x1a80
-   Temperature in Celsius=26
+   Current temperature is 26 Celsius
+   Hysteresis temperature is 75 Celsius
+   Shutdown temperature is 80 Celsius
 ```
 
 Here is I2C communication in Sigrok PulseView:
 
+Getting current temperature (Pointer Register = 0x00):
+
 ![LM75A Get Temperature PulseView](https://github.com/hpaluch/pi-lm75a/blob/master/assets/lm75a-raspberry-get-temp.png?raw=true) 
+
+Getting hysteresis temperature (Pointer Register = 0x02):
+
+![LM75A Get Hysteresis PulseView](https://github.com/hpaluch/pi-lm75a/blob/master/assets/lm75a-raspberry-get-hysteresis.png?raw=true) 
+
+NOTE: 0x004b = 75 (degress of Celsius)
 
 # Bugs
 
