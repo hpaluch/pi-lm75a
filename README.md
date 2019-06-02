@@ -3,6 +3,9 @@
 How to connect popular LM75A Temperature sensor to
 Raspberry PI using I2C.
 
+
+![Raspberry PI and I2C LM75A](https://github.com/hpaluch/pi-lm75a/blob/master/assets/pi-lm75a.jpg?raw=true) 
+
 Tested HW/SW:
 
 * Raspberry PI version (from https://raspberry-projects.com/pi/pi-hardware/raspberry-pi-pcb-versions):
