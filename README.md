@@ -62,6 +62,10 @@ Now you can run example python program:
    Temperature in Celsius=26
 ```
 
+Here is I2C communication in Sigrok PulseView:
+
+![LM75A Get Temperature PulseView](https://github.com/hpaluch/pi-lm75a/blob/master/assets/lm75a-raspberry-get-temp.png?raw=true) 
+
 # Bugs
 
 * The +/- 0.5 degree of Celsius precision is lost (currently
