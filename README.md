@@ -87,11 +87,13 @@ Getting current temperature (Pointer Register = 0x00):
 
 ![LM75A Get Temperature PulseView](https://github.com/hpaluch/pi-lm75a/blob/master/assets/lm75a-raspberry-get-temp.png?raw=true) 
 
+NOTE 0x001a = 26 (degrees of Celsius)
+
 Getting hysteresis temperature (Pointer Register = 0x02):
 
 ![LM75A Get Hysteresis PulseView](https://github.com/hpaluch/pi-lm75a/blob/master/assets/lm75a-raspberry-get-hysteresis.png?raw=true) 
 
-NOTE: 0x004b = 75 (degress of Celsius)
+NOTE: 0x004b = 75 (degrees of Celsius)
 
 # Bugs
 
