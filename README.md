@@ -17,6 +17,20 @@ Tested HW/SW:
 
 # Setup
 
+
+Connect your Raspberry PI to CJMCU-75 board using this layout
+
+```
+            Rasp. Pi
+            1 2
+CJMCU-75    +---+       CJMCU-75
+NC  --  3.3V|o o|5V  -- VCC
+SDA --  SDA |o o|NC
+SCL --  SCL |o o|GND -- GND
+             ...
+            other pins unused
+```
+
 Install these requirements (see https://www.instructables.com/id/Raspberry-Pi-I2C-Python/ for details):
 
 ```bash
