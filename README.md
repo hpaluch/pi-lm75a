@@ -75,10 +75,11 @@ Looks OK - device found at address `0x48`
 Now you can run example python program:
 ```
 ./test-lm75a.py 1 0x48
-   Expecting LM75 to have I2C slave address 0x48 on I2C BUS 1
-   Current temperature is 26 Celsius
-   Hysteresis temperature is 75 Celsius
-   Shutdown temperature is 80 Celsius
+
+Expecting LM75 to have I2C slave address 0x48 on I2C BUS 1
+Current temperature is 26.0 Celsius
+Hysteresis temperature is 75.0 Celsius
+Shutdown temperature is 80.0 Celsius
 ```
 
 Here is I2C communication in Sigrok PulseView:
@@ -97,10 +98,7 @@ NOTE: 0x004b = 75 (degrees of Celsius)
 
 # Bugs
 
-* Negative values handled incorrectly
-* The +/- 0.5 degree of Celsius precision is lost (currently
-only whole degrees of Celsius are shown)
-
+N/A
 
 [LM75A]: http://www.ti.com/lit/ds/symlink/lm75a.pdf
 [CJMCU-75]: https://www.amazon.de/gp/product/B01FQWN79W/

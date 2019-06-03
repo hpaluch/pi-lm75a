@@ -3,14 +3,25 @@
 # sys.argv
 import sys
 import smbus
+import struct
+
+def raw_temp_to_float(raw_temp):
+    s=chr(raw_temp & 0xff) + chr( (raw_temp >> 8) & 0xff )
+    # signed short, big-endian (I2C LM75A uses BE, this ARM uses LE)
+    ss = struct.unpack(">h",s)
+    ss0 = ss[0]
+    # lowest 7-bits are unused (actually garbage) on LM75A
+    # and we need to divide value by 2 (there is 0.5 precision)
+    f = ( ss0 >> 7 ) * 0.5
+    #print("ss=%d (0x%x)" % (ss0,ss0))
+    #print("f=",f)
+    return f
 
 
 def read_temp(bus_obj,i2c_addr,temp_reg,descr):
     x = bus_obj.read_word_data(i2c_addr,temp_reg)
-    # swap byte order
-    x2 = (( x >> 8) & 0xff) + ( ( x << 8 ) & 0xff00)
-    #print("Raw=0x%x Raw_Swapped=0x%x" % (x,x2))
-    print("%s temperature is %d Celsius" % (descr,x2 >> 8,) )
+    #print("Raw=0x%x => float %.1f" % (x, raw_temp_to_float(x)))
+    print("%s temperature is %.1f Celsius" % (descr,raw_temp_to_float(x)) )
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
@@ -26,5 +37,4 @@ if __name__ == "__main__":
     read_temp(bus, i2c_addr,0, "Current")
     read_temp(bus, i2c_addr,2, "Hysteresis")
     read_temp(bus, i2c_addr,3, "Shutdown")
-
 
