@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Print values of temperature registers from I2C LM75A using
+"""Print values of temperature registers from I2C LM75A sensor using
    smbus package
 
    Tested on Python 2.7.11 and python-smbus version 3.1.2-3
@@ -13,7 +13,7 @@ import smbus
 
 def raw_temp_to_float(raw_temp):
     """Converts RAW LM75A 16-bit Bit-Endian temperature
-    to float in degress of Celsius
+    to float in degrees of Celsius
     """
     s = chr(raw_temp & 0xff) + chr((raw_temp >> 8) & 0xff)
     # signed short, big-endian (I2C LM75A uses BE, this ARM uses LE)
@@ -28,7 +28,7 @@ def raw_temp_to_float(raw_temp):
 
 def read_temp(bus_obj, i2c_addr, temp_reg, descr):
     """Reads specified temperature register from I2C LM75A sensor and prints
-    its value on stdout
+    its value in degrees of Celsius on stdout
     """
     x = bus_obj.read_word_data(i2c_addr, temp_reg)
     #print("Raw=0x%x => float %.1f" % (x, raw_temp_to_float(x)))
